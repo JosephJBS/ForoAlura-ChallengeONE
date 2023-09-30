@@ -1,4 +1,4 @@
-package com.alura.foro.model.dto;
+package com.alura.foro.model.dto.user;
 
 import com.alura.foro.model.entity.User;
 

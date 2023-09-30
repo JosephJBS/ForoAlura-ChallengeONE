@@ -1,4 +1,4 @@
-package com.alura.foro.model.dto;
+package com.alura.foro.model.dto.user;
 
 import org.antlr.v4.runtime.misc.NotNull;
 

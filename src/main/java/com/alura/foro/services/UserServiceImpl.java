@@ -1,9 +1,9 @@
 package com.alura.foro.services;
 
-import com.alura.foro.model.dto.UserDataCreate;
-import com.alura.foro.model.dto.UserListData;
-import com.alura.foro.model.dto.UserResponse;
-import com.alura.foro.model.dto.UserUpdateData;
+import com.alura.foro.model.dto.user.UserDataCreate;
+import com.alura.foro.model.dto.user.UserListData;
+import com.alura.foro.model.dto.user.UserResponse;
+import com.alura.foro.model.dto.user.UserUpdateData;
 import com.alura.foro.model.entity.User;
 import com.alura.foro.model.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserListData> getActiveUsers() {
-        List<User> usersFound = userRepository.findUserByStatusTrue();
+        List<User> usersFound = userRepository.findByStatusTrue();
         List<UserListData> allUsers = usersFound.stream()
                 .map(user -> new UserListData(user))
                 .collect(Collectors.toList());

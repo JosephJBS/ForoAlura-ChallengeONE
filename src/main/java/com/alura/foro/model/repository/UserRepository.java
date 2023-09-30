@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<User,Integer> {
 
-    List<User> findUserByStatusTrue();
+    List<User> findByStatusTrue();
 }

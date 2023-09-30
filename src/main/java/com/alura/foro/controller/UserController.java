@@ -1,10 +1,9 @@
 package com.alura.foro.controller;
 
-import com.alura.foro.model.dto.UserDataCreate;
-import com.alura.foro.model.dto.UserListData;
-import com.alura.foro.model.dto.UserResponse;
-import com.alura.foro.model.dto.UserUpdateData;
-import com.alura.foro.model.entity.User;
+import com.alura.foro.model.dto.user.UserDataCreate;
+import com.alura.foro.model.dto.user.UserListData;
+import com.alura.foro.model.dto.user.UserResponse;
+import com.alura.foro.model.dto.user.UserUpdateData;
 import com.alura.foro.services.UserService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
