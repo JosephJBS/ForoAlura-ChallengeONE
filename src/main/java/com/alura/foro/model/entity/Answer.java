@@ -22,6 +22,6 @@ public class Answer {
     private int id_topic;
     private String mensaje;
     private LocalDateTime fechaCreacion = LocalDateTime.now();
-    private boolean active;
+    private boolean status;
 
 }

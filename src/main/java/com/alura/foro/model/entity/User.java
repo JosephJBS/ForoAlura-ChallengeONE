@@ -21,6 +21,6 @@ public class User {
     private String nombre;
     private String email;
     private String password;
-    private boolean active;
+    private boolean status;
 
 }

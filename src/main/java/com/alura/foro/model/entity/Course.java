@@ -19,6 +19,6 @@ public class Course {
     private int id_course;
     private String nombre;
     private String categoria;
-    private boolean active;
+    private boolean status;
 
 }
