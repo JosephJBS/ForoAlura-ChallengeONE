@@ -19,7 +19,9 @@ public class Answer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_answer;
     private int id_user;
-    private int id_topic;
+
+    @Column(name = "id_topic")
+    private int idTopic;
     private String mensaje;
     private LocalDateTime fechaCreacion = LocalDateTime.now();
     private boolean status;

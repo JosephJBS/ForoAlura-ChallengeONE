@@ -21,4 +21,8 @@ public interface TopicService {
 
     void deleteTopicById(int id);
 
+    //void changeStausTopicNoSolucionado(int id);
+
+    //void changeStausTopicSolucionado(int id);
+
 }

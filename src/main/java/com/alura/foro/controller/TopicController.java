@@ -6,6 +6,7 @@ import com.alura.foro.model.dto.topic.TopicUpdateData;
 import com.alura.foro.services.TopicService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,33 +19,34 @@ public class TopicController {
     TopicService topicService;
 
     @GetMapping
-    public List<TopicResponse> getAllTopics(){
-        return topicService.getAllTopics();
+    public ResponseEntity<List<TopicResponse>> getAllTopics(){
+        return ResponseEntity.ok(topicService.getAllTopics()) ;
     }
 
     @GetMapping("/active")
-    public List<TopicResponse> getActiveTopic(){
-        return topicService.gellActiveTopics();
+    public ResponseEntity<List<TopicResponse>> getActiveTopic(){
+        return ResponseEntity.ok(topicService.gellActiveTopics());
     }
 
     @GetMapping("/{id}")
-    public TopicResponse getTopicById(@PathVariable int id){
-        return topicService.getTopicById(id);
+    public ResponseEntity<TopicResponse> getTopicById(@PathVariable int id){
+        return ResponseEntity.ok(topicService.getTopicById(id));
     }
 
     @PostMapping
-    public TopicResponse createTopic(@RequestBody @Valid TopicCreateData topicCreateData){
-        return topicService.createTopic(topicCreateData);
+    public ResponseEntity<TopicResponse>  createTopic(@RequestBody @Valid TopicCreateData topicCreateData){
+        return ResponseEntity.ok(topicService.createTopic(topicCreateData));
     }
 
     @PutMapping
-    public TopicResponse updateTopic (@RequestBody @Valid TopicUpdateData updateData){
-        return topicService.updateTopic(updateData);
+    public ResponseEntity<TopicResponse> updateTopic (@RequestBody @Valid TopicUpdateData updateData){
+        return ResponseEntity.ok(topicService.updateTopic(updateData));
     }
 
     @DeleteMapping("/{id}")
-    public void deleteTopic(@PathVariable int id){
+    public ResponseEntity<?> deleteTopic(@PathVariable int id){
         topicService.deleteTopicById(id);
+        return ResponseEntity.noContent().build();
     }
 
 

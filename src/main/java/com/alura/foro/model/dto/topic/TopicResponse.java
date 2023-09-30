@@ -3,21 +3,20 @@ package com.alura.foro.model.dto.topic;
 import com.alura.foro.model.constans.StatusTopico;
 import com.alura.foro.model.constans.TopicErrors;
 import com.alura.foro.model.entity.Topic;
-import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Data
 public class TopicResponse {
-    int id_topic;
-    int id_curso;
-    int id_user;
-    String titulo;
-    String mensaje;
-    LocalDateTime fechaCreacion;
-    StatusTopico status;
-    TopicErrors topicErrors;
+    private int id_topic;
+    private int id_curso;
+    private int id_user;
+    private String titulo;
+    private String mensaje;
+    private LocalDateTime fechaCreacion;
+    private StatusTopico status;
+    private TopicErrors topicErrors;
 
     public TopicResponse(Topic topic) {
         this.id_topic = topic.getId_topic();
@@ -48,7 +47,7 @@ public class TopicResponse {
 
     public static TopicResponse errorTopicoNoEncontrado(){
         TopicResponse topicError = new TopicResponse();
-        topicError.setTopicErrors(TopicErrors.COURSE_NO_EXIST);
+        topicError.setTopicErrors(TopicErrors.TOPIC_NO_EXIST);
         return topicError;
     }
 }
