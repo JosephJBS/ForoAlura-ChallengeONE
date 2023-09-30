@@ -8,8 +8,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "topico")
@@ -27,6 +25,6 @@ public class Topic {
     private String titulo;
     private String mensaje;
     private LocalDateTime fechaCreacion = LocalDateTime.now();
-    private StatusTopico status = StatusTopico.NO_RESPONDIDO;
+    private StatusTopico status;
 
 }
