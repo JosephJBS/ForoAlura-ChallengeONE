@@ -3,6 +3,7 @@ package com.alura.foro.services;
 import com.alura.foro.infra.securiry.AuthenticationResponse;
 import com.alura.foro.infra.securiry.JwtService;
 import com.alura.foro.model.dto.user.DatosAutenticacionUsuario;
+import com.alura.foro.model.dto.user.UserDataCreate;
 import com.alura.foro.model.entity.User;
 import com.alura.foro.model.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,15 +20,31 @@ import org.springframework.stereotype.Service;
 public class AuthenticationService {
 
     @Autowired
-    private final UserRepository userRepository;
-    //private final PasswordEncoder passwordEncoder;
-    @Autowired
+    private  UserRepository userRepository;
 
-    private final JwtService jwtService;
+    @Autowired
+    private  PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private  JwtService jwtService;
 
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    public AuthenticationResponse register(UserDataCreate request) {
+        var user = User.builder()
+                .password(request.password())
+                .email(request.email())
+                .nombre(request.nombre())
+                .password(passwordEncoder.encode(request.password()))
+                .status(true)
+                .build();
+        userRepository.save(user);
+        var jwtToken = jwtService.generateToken(user);
+        return AuthenticationResponse.builder()
+                .token(jwtToken)
+                .build();
+    }
 
 
     public AuthenticationResponse authenticate(DatosAutenticacionUsuario request) {

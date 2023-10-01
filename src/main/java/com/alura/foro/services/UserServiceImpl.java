@@ -8,6 +8,7 @@ import com.alura.foro.model.entity.User;
 import com.alura.foro.model.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,12 +22,15 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
     @Override
     public UserResponse createUser(UserDataCreate userDataCreate) {
         User user = new User().builder()
                 .nombre(userDataCreate.nombre())
                 .email(userDataCreate.email())
-                .password(userDataCreate.password())
+                .password(passwordEncoder.encode(userDataCreate.password()))
                 .status(true)
                 .build();
         userRepository.save(user);
@@ -72,7 +76,7 @@ public class UserServiceImpl implements UserService {
 
         userFound.setEmail(updateData.email());
         userFound.setNombre(updateData.nombre());
-        userFound.setPassword(updateData.password());
+        userFound.setPassword(passwordEncoder.encode(updateData.password()));
 
         userRepository.save(userFound);
         log.info("Actualiza usuario {}", userFound);
