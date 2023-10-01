@@ -9,6 +9,6 @@ public record UserListData (
         boolean status
 ){
     public UserListData(User user){
-        this(user.getId_user(),user.getNombre(),user.getEmail(), user.isStatus());
+        this(user.getIdUser(),user.getNombre(),user.getEmail(), user.isStatus());
     }
 }

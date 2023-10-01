@@ -9,7 +9,7 @@ public record UserResponse(
         boolean status
 ) {
     public UserResponse(User user){
-        this(user.getId_user(), user.getNombre(), user.getEmail(), user.isStatus());
+        this(user.getIdUser(), user.getNombre(), user.getEmail(), user.isStatus());
     }
 
 }
